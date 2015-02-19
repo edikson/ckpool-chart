@@ -47,6 +47,26 @@ $(function () {
             title: {
                 text: 'THs'
             },
+            labels: {
+                formatter: function() {
+                    var maxElement = this.axis.max;
+                    if (maxElement > 1000000000000000000) {
+                        return this.value / 1000000000000000000 + "E";
+                    } else if (maxElement > 1000000000000000) {
+                        return this.value / 1000000000000000 + "P";
+                    } else if (maxElement > 1000000000000) {
+                        return this.value / 1000000000000 + "T";
+                    } else if (maxElement > 1000000000) {
+                        return this.value / 1000000000 + "G";
+                    } else if (maxElement > 1000000) {
+                        return this.value / 1000000 + "M";
+                    } else if (maxElement > 1000) {
+                        return this.value / 1000 + "K";
+                    } else {
+                        return this.value;
+                    }
+                }
+            },
             plotLines: [{
                 value: 0,
                 width: 1,
@@ -54,7 +74,23 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: 'TH'
+              formatter: function() {
+                    if (this.y > 1000000000000000000) {
+                        return this.y / 1000000000000000000 + "E";
+                    } else if (this.y > 1000000000000000) {
+                        return this.y / 1000000000000000 + "P";
+                    } else if (this.y > 1000000000000) {
+                        return this.y / 1000000000000 + "T";
+                    } else if (this.y > 1000000000) {
+                        return this.y / 1000000000 + "G";
+                    } else if (this.y > 1000000) {
+                        return this.y / 1000000 + "M";
+                    } else if (this.y > 1000) {
+                        return this.y / 1000 + "K";
+                    } else {
+                        return this.y;
+                    }
+                }
         },
         legend: {
             layout: 'vertical',
