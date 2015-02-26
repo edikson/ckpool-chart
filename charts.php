@@ -34,10 +34,10 @@ $(function () {
         xAxis: {
             categories: [<?php
                 $i = 0;
-                foreach (array_reverse($data['hashrate1m']) as $key => $val) {
+                foreach ($data['hashrate1m'] as $key => $val) {
                     $i++;
                     echo '"' . date('Y-m-j G:i', $key) . '"';
-                    if ($i < count(array_reverse($data['hashrate1m']))) {
+                    if ($i < count($data['hashrate1m'])) {
                         echo ',';
                     }
                 }
@@ -100,7 +100,7 @@ $(function () {
         },
         series: [{
             name: 'Hashrate',
-            data: [<?php echo implode(',', array_reverse($data['hashrate1m'])); ?>]
+            data: [<?php echo implode(',', $data['hashrate1m']); ?>]
         }]
     });
 });

@@ -58,8 +58,9 @@ while ((-1 !== fseek($logFile, $pos, SEEK_END)) && ($maxvalues > 0)){
 
         // Format array of data based on what we have/want
         if ($lineData['hashrate1m']) { // only save hashrate data if that's what this line is
-            $data['hashrate1m'][$lineTime] = hashparse($lineData['hashrate1m']);
-            $maxvalues--;
+        $element = array($lineTime => hashparse($lineData['hashrate1m']));
+        $data['hashrate1m'] = $element + $data['hashrate1m'];
+        $maxvalues--;
         }
     }
     $pos--;
