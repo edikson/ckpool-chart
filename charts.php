@@ -24,7 +24,7 @@ include('parse.php');
 $(function () {
     $('#container').highcharts({
         title: {
-            text: 'Hashrate 5m',
+            text: 'Hashrate 1m',
             x: -20 //center
         },
         subtitle: {
@@ -34,10 +34,10 @@ $(function () {
         xAxis: {
             categories: [<?php
                 $i = 0;
-                foreach ($data['hashrate5m'] as $key => $val) {
+                foreach ($data['hashrate1m'] as $key => $val) {
                     $i++;
                     echo '"' . date('Y-m-j G:i', $key) . '"';
-                    if ($i < count($data['hashrate5m'])) {
+                    if ($i < count($data['hashrate1m'])) {
                         echo ',';
                     }
                 }
@@ -100,7 +100,7 @@ $(function () {
         },
         series: [{
             name: 'Hashrate',
-            data: [<?php echo implode(',', $data['hashrate5m']); ?>]
+            data: [<?php echo implode(',', $data['hashrate1m']); ?>]
         }]
     });
 });
